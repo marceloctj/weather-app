@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {DefaultTheme, ThemeProvider, DarkTheme} from '@react-navigation/native';
-import {RootNavigation} from './src/ui/navigation';
 import {useColorScheme} from 'react-native';
+import {RootNavigation} from '@ui/navigation';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';

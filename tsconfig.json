@@ -5,6 +5,12 @@
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Completeness */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */,
+    "baseUrl": "./",
+    "paths": {
+      "@data/*": ["./src/data/*"],
+      "@ui/*": ["./src/ui/*"],
+      "@infra/*": ["./src/infra/*"],
+    }
   }
 }
