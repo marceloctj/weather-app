@@ -1,22 +1,16 @@
 import React from 'react';
 
-import {
-  DefaultTheme,
-  ThemeProvider,
-  DarkTheme,
-} from '@react-navigation/native';
-import { useColorScheme } from 'react-native';
+import { ThemeProvider } from 'styled-components';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import { RootNavigation } from '@presentation/navigation';
 import { store } from '@presentation/store';
+import { theme } from '@presentation/config/theme';
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
     <ReduxProvider store={store}>
-      <ThemeProvider value={isDarkMode ? DarkTheme : DefaultTheme}>
+      <ThemeProvider theme={theme.default}>
         <RootNavigation />
       </ThemeProvider>
     </ReduxProvider>
