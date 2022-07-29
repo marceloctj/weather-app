@@ -13,6 +13,10 @@
       "@presentation/*": ["src/presentation/*"],
       "@infra/*": ["./src/infra/*"],
     },
-    "types": ["jest", "node", "styled-components-react-native"],
-  }
+    "types": ["jest", "styled-components-react-native"],
+  },
+  "exclude": [
+    "node_modules", "babel.config.js", "metro.config.js", "jest.config.js"
+  ],
+  "typeRoots": ["./src/types"]
 }
