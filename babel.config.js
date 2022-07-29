@@ -9,7 +9,7 @@ module.exports = {
         alias: {
           '@data': './src/data',
           '@infra': './src/infra',
-          '@ui': './src/ui',
+          '@presentation': './src/presentation',
         },
       },
     ],

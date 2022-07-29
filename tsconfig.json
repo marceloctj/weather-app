@@ -9,8 +9,9 @@
     "baseUrl": "./",
     "paths": {
       "@data/*": ["./src/data/*"],
-      "@ui/*": ["./src/ui/*"],
+      "@presentation/*": ["src/presentation/*"],
       "@infra/*": ["./src/infra/*"],
-    }
+    },
+    "types": ["jest", "node", "styled-components-react-native"],
   }
 }
