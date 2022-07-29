@@ -7,6 +7,7 @@
     /* Completeness */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */,
     "baseUrl": "./",
+    "strictNullChecks": false,
     "paths": {
       "@data/*": ["./src/data/*"],
       "@presentation/*": ["src/presentation/*"],
