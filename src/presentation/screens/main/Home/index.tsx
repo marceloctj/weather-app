@@ -1,7 +1,7 @@
 import React from 'react';
-import {Container, Text} from './styles';
+import { Container, Text } from './styles';
 
-const HomeScreen: React.FC<any> = () => {
+const HomeScreen: React.FC = () => {
   return (
     <Container>
       <Text>Oi</Text>
