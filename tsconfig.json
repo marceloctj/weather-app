@@ -12,6 +12,7 @@
       "@data/*": ["./src/data/*"],
       "@presentation/*": ["src/presentation/*"],
       "@infra/*": ["./src/infra/*"],
+      "@assets/*": ["./src/assets/*"],
     },
     "types": ["jest", "styled-components-react-native"],
   },
