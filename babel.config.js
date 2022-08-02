@@ -11,6 +11,7 @@ module.exports = {
           '@data': './src/data',
           '@infra': './src/infra',
           '@presentation': './src/presentation',
+          '@assets': './src/assets',
         },
       },
     ],
