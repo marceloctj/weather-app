@@ -1,6 +1,10 @@
 import { HttpClient, HttpStatusCode } from '@infra/http';
 import { OPENWEATHERMAP_API_WEATHER, OPENWEATHERMAP_KEY } from '@env';
-import { RemoteWeatherModel, CoordModel, WeatherModel } from '@data/models';
+import {
+  CoordModel,
+  WeatherModel,
+  RemoteWeatherOneCallModel,
+} from '@data/models';
 
 import { weatherAdapter } from '@data/adapters/weather-adapter';
 
@@ -11,8 +15,8 @@ export class RemoteWeather {
     coord: CoordModel,
   ): Promise<WeatherModel | undefined> => {
     const { body, statusCode } =
-      await this.httpClient.request<RemoteWeatherModel>({
-        url: '/weather',
+      await this.httpClient.request<RemoteWeatherOneCallModel>({
+        url: '/onecall',
         method: 'get',
         params: coord,
       });
@@ -25,7 +29,12 @@ export class RemoteWeather {
 
 const remoteWeather = new RemoteWeather(
   new HttpClient(OPENWEATHERMAP_API_WEATHER, {
-    params: { appid: OPENWEATHERMAP_KEY, units: 'metric', lang: 'pt_br' },
+    params: {
+      appid: OPENWEATHERMAP_KEY,
+      units: 'metric',
+      lang: 'pt_br',
+      exclude: 'minutely',
+    },
   }),
 );
 
