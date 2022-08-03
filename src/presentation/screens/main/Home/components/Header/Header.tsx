@@ -10,22 +10,35 @@ import {
   RightContent,
   WeatherImage,
 } from './styles';
+import { useAppSelector } from '@presentation/store/hooks';
+import { ActivityIndicator } from 'react-native';
 
 export const Header: React.FC = () => {
+  const geocoding = useAppSelector(state => state.home.geocoding);
+  const weather = useAppSelector(state => state.home.weather);
+
+  const capitalize = (str: string) => {
+    if (!str) {
+      return '';
+    }
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
+  const source = require('@assets/images/icons/night.png');
+
   return (
     <Container>
       <LeftContent>
         <Text scale="h6" variant="primary" numberOfLines={2}>
-          São José do Vale do Rio Preto
+          {geocoding ? geocoding.city : <ActivityIndicator />}
         </Text>
-        <DegressText>32°</DegressText>
-        <WeatherTag text="Cloudy" />
+        <DegressText>
+          {weather ? `${weather.temp.main}º` : <ActivityIndicator />}
+        </DegressText>
+        <WeatherTag text={capitalize(weather?.description)} />
       </LeftContent>
       <RightContent>
-        <WeatherImage
-          source={require('@assets/images/icons/night.png')}
-          resizeMode="contain"
-        />
+        {weather && <WeatherImage source={source} resizeMode="contain" />}
       </RightContent>
     </Container>
   );

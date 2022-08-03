@@ -1,4 +1,6 @@
+import { useAppSelector } from '@presentation/store/hooks';
 import React from 'react';
+import { ActivityIndicator } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from 'styled-components/native';
@@ -7,6 +9,7 @@ import { Container, Item, TextHumidity, TextWindy } from './styles';
 
 export const AdditionalData: React.FC = () => {
   const theme = useTheme();
+  const weather = useAppSelector(state => state.home.weather);
 
   return (
     <Container>
@@ -16,7 +19,9 @@ export const AdditionalData: React.FC = () => {
           color={theme.palette.primary.main}
           size={24}
         />
-        <TextHumidity>13%</TextHumidity>
+        <TextHumidity>
+          {weather?.percentOfHumidity || <ActivityIndicator />}%
+        </TextHumidity>
       </Item>
       <Item>
         <Icon
@@ -24,7 +29,9 @@ export const AdditionalData: React.FC = () => {
           color={theme.palette.primary.main}
           size={24}
         />
-        <TextWindy>9km/h</TextWindy>
+        <TextWindy>
+          {weather?.wind?.speedInKm.toFixed(2) || <ActivityIndicator />} km/h
+        </TextWindy>
       </Item>
     </Container>
   );
