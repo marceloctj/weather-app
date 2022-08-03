@@ -1,10 +1,22 @@
 import React from 'react';
-import { Container, Text } from './styles';
+
+import { Container, SafeAreaView, ScrollView } from './styles';
+
+import Header from './components/Header';
+import AdditionalData from './components/AdditionalData';
+import WeatherHourlyPanel from './components/WeatherHourlyPanel';
+import WeatherWeeklyPanel from './components/WeatherWeeklyPanel';
 
 const HomeScreen: React.FC = () => {
   return (
     <Container>
-      <Text>Oi</Text>
+      <SafeAreaView />
+      <Header />
+      <ScrollView>
+        <AdditionalData />
+        <WeatherHourlyPanel />
+        <WeatherWeeklyPanel />
+      </ScrollView>
     </Container>
   );
 };
