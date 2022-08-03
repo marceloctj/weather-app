@@ -1,6 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
 
 import { reducers } from './reducers';
+import { rootSaga } from './sagas';
+
+const sagaMiddleware = createSagaMiddleware();
 
 const enhancers = [];
 
@@ -10,9 +14,11 @@ if (__DEV__ && console?.tron) {
 
 export const store = configureStore({
   reducer: reducers,
-  middleware: [],
+  middleware: [sagaMiddleware],
   enhancers,
 });
+
+sagaMiddleware.run(rootSaga);
 
 export type RootState = ReturnType<typeof store.getState>;
 
