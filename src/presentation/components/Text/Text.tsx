@@ -17,6 +17,7 @@ type Props = PropsWithChildren<{
     | 'body2'
     | 'button';
   useContrast?: boolean;
+  align?: 'left' | 'center' | 'right';
 }> &
   TextProps;
 
@@ -39,6 +40,7 @@ const StyledText = styled.Text<Props>`
       useContrast ? 'contrastText' : 'main'
     ]};
   font-size: ${({ scale }) => scales[scale || 'body1']}px;
+  text-align: ${({ align }) => align || 'left'};
 `;
 
 export const Text: React.FC<Props> = ({ children, ...textProps }) => (

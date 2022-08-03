@@ -19,6 +19,7 @@ declare module 'styled-components' {
 
     fonts: {
       regular: string;
+      bold: string;
     };
   }
 }
@@ -41,6 +42,7 @@ export const theme: { [k: string]: DefaultTheme } = {
     },
     fonts: {
       regular: 'Lato-Regular',
+      bold: 'Lato-Bold',
     },
   },
 };
