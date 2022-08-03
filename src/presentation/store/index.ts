@@ -1,9 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import { reducers } from './reducers';
+
+const enhancers = [];
+
+if (__DEV__ && console?.tron) {
+  enhancers.push(console.tron.createEnhancer());
+}
+
 export const store = configureStore({
-  reducer: {
-    test: () => null,
-  },
+  reducer: reducers,
+  middleware: [],
+  enhancers,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
