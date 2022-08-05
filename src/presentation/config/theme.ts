@@ -32,8 +32,8 @@ const makePalette = (main: string, contrastText: string) => ({
 export const theme: { [k: string]: DefaultTheme } = {
   default: {
     palette: {
-      primary: makePalette('#0b3656', '#f5f5f5'),
-      secondary: makePalette('#ff73b9', '#f5f5f5'),
+      primary: makePalette('#111111', '#f5f5f5'),
+      secondary: makePalette('#ffcc02', '#f5f5f5'),
       background: makePalette('#fefefe', '#111'),
       black: makePalette('#000', '#f5f5f5'),
       white: makePalette('#f5f5f5', '#111'),

@@ -9,9 +9,7 @@ export const TextTemp = styled(Text).attrs({
   font: 'bold',
   scale: 'body1',
   align: 'right',
-})`
-  flex: 1;
-`;
+})``;
 
 export const Container = styled.View`
   margin: 44px 32px 0;
@@ -28,4 +26,10 @@ export const MiniImage = styled.Image`
   height: 40px;
   resize-mode: contain;
   flex: 1;
+`;
+
+export const TempContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
 `;
