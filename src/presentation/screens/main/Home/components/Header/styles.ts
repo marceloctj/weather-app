@@ -5,7 +5,9 @@ import Text from '@presentation/components/Text';
 export const Container = styled.View`
   flex-direction: row;
   align-items: flex-end;
-  margin-top: 32px;
+  padding: 16px 0 32px;
+  background-color: ${({ theme }) => theme.palette.primary.main};
+  min-height: 200px;
 `;
 
 export const LeftContent = styled.View`
@@ -16,7 +18,7 @@ export const LeftContent = styled.View`
 
 export const DegressText = styled(Text).attrs({
   scale: 'h2',
-  variant: 'primary',
+  variant: 'white',
 })`
   margin-top: 12px;
 `;
@@ -29,7 +31,6 @@ export const WeatherTag = styled(Tag).attrs({
 
 export const RightContent = styled.View`
   flex: 1;
-  margin-right: -16px;
   margin-left: 16px;
 `;
 

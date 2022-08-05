@@ -2,11 +2,31 @@ import {
   RemoteWeatherOneCallModel,
   WeatherCollection,
 } from '@data/models/weather-model';
-import { OPENWEATHERMAP_ICONS } from '@env';
 
 function convertMsToKm(ms: number): number {
   return ms * 3.6;
 }
+
+const icons = {
+  '01d': require('@assets/images/weather/01d.png'),
+  '01n': require('@assets/images/weather/01n.png'),
+  '02d': require('@assets/images/weather/02d.png'),
+  '02n': require('@assets/images/weather/02n.png'),
+  '03d': require('@assets/images/weather/03d.png'),
+  '03n': require('@assets/images/weather/03n.png'),
+  '04d': require('@assets/images/weather/04d.png'),
+  '04n': require('@assets/images/weather/04n.png'),
+  '09d': require('@assets/images/weather/09d.png'),
+  '09n': require('@assets/images/weather/09n.png'),
+  '10d': require('@assets/images/weather/10d.png'),
+  '10n': require('@assets/images/weather/10n.png'),
+  '11d': require('@assets/images/weather/11d.png'),
+  '11n': require('@assets/images/weather/11n.png'),
+  '13d': require('@assets/images/weather/13d.png'),
+  '13n': require('@assets/images/weather/13n.png'),
+  '50d': require('@assets/images/weather/50d.png'),
+  '50n': require('@assets/images/weather/50n.png'),
+};
 
 function weatherAdapter(
   weatherData:
@@ -18,7 +38,7 @@ function weatherAdapter(
   return {
     id: weather.id,
     description: weather.description,
-    icon: `${OPENWEATHERMAP_ICONS}/${weather.icon}@4x.png`,
+    icon: icons[weather.icon as keyof typeof icons],
     pressure: weatherData.pressure,
     wind: {
       speedInKm: convertMsToKm(weatherData.wind_speed),

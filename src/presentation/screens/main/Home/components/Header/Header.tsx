@@ -26,16 +26,14 @@ export const Header: React.FC = () => {
   return (
     <Container>
       <LeftContent>
-        <Text scale="h6" variant="primary" numberOfLines={2}>
+        <Text scale="h6" variant="white" numberOfLines={2}>
           {geocoding && geocoding.city}
         </Text>
         <DegressText>{weather && `${weather.temp.main}º`}</DegressText>
         {weather && <WeatherTag text={capitalize(weather?.description)} />}
       </LeftContent>
       <RightContent>
-        {weather && (
-          <WeatherImage source={{ uri: weather.icon }} resizeMode="contain" />
-        )}
+        {weather && <WeatherImage source={weather.icon} resizeMode="contain" />}
       </RightContent>
     </Container>
   );

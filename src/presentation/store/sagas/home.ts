@@ -20,6 +20,8 @@ function* loadWeatherData({ payload }: AnyAction) {
       type: Types.SET_WEATHER_DATA,
       payload: weatherData,
     });
+
+    yield put({ type: Types.SET_LOADED, payload: true });
   }
 }
 
