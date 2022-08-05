@@ -20,13 +20,13 @@ export const DegressText = styled(Text).attrs({
   scale: 'h2',
   variant: 'white',
 })`
-  margin-top: 12px;
+  margin-top: 16px;
 `;
 
 export const WeatherTag = styled(Tag).attrs({
   variant: 'lightGray',
 })`
-  margin-top: 12px;
+  margin-top: 16px;
 `;
 
 export const RightContent = styled.View`
