@@ -1,9 +1,9 @@
 import { AnyAction } from 'redux';
-import { GeocodingModel, WeatherModel } from '@data/models';
+import { GeocodingModel, WeatherCollection } from '@data/models';
 import { Types } from '@presentation/store/actions/home';
 
 type HomeState = {
-  weather: WeatherModel;
+  weather: WeatherCollection;
   geocoding: GeocodingModel;
 };
 
@@ -18,9 +18,9 @@ export const homeReducer = (
 ): HomeState => {
   switch (action.type) {
     case Types.SET_WEATHER_DATA:
-      return { ...state, weather: action.payload.weatherData };
+      return { ...state, weather: action.payload };
     case Types.SET_GEOLOCATION_DATA:
-      return { ...state, geocoding: action.payload.geocodingData };
+      return { ...state, geocoding: action.payload };
     default:
       return state;
   }

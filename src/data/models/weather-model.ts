@@ -81,3 +81,9 @@ export interface WeatherModel {
     directionDegrees: number;
   };
 }
+
+export interface WeatherCollection {
+  today: WeatherModel;
+  hourly: WeatherModel[];
+  daily: WeatherModel[];
+}

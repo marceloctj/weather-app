@@ -15,7 +15,7 @@ import { ActivityIndicator } from 'react-native';
 
 export const Header: React.FC = () => {
   const geocoding = useAppSelector(state => state.home.geocoding);
-  const weather = useAppSelector(state => state.home.weather);
+  const weather = useAppSelector(state => state.home.weather?.today);
 
   const capitalize = (str: string) => {
     if (!str) {
