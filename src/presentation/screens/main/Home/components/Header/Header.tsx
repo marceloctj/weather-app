@@ -24,8 +24,6 @@ export const Header: React.FC = () => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
-  const source = require('@assets/images/icons/night.png');
-
   return (
     <Container>
       <LeftContent>
@@ -38,7 +36,9 @@ export const Header: React.FC = () => {
         <WeatherTag text={capitalize(weather?.description)} />
       </LeftContent>
       <RightContent>
-        {weather && <WeatherImage source={source} resizeMode="contain" />}
+        {weather && (
+          <WeatherImage source={{ uri: weather.icon }} resizeMode="contain" />
+        )}
       </RightContent>
     </Container>
   );

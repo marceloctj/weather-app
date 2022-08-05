@@ -2,19 +2,31 @@ import React from 'react';
 
 import { Container, Item, TextHour, TextTemp, MiniImage } from './styles';
 
-import { mockedData } from './mock';
+import { useAppSelector } from '@presentation/store/hooks';
+import { ActivityIndicator } from 'react-native';
 
 export const WeatherHourlyPanel: React.FC = () => {
-  const imgSource = require('@assets/images/icons/night.png');
+  const hourlyForecast = useAppSelector(state => state.home.weather?.hourly);
+
+  const makeHourString = (date: Date) => {
+    const hour = date.getHours();
+    const period = hour > 12 ? 'PM' : 'AM';
+    return `${hour.toString().padStart(2, '0')} ${period}`;
+  };
+
   return (
     <Container>
-      {mockedData.map((item: any, index: number) => (
-        <Item key={index}>
-          <TextHour>{item.hour}</TextHour>
-          <MiniImage source={imgSource} />
-          <TextTemp>{item.temperature}</TextTemp>
-        </Item>
-      ))}
+      {hourlyForecast ? (
+        hourlyForecast.map((item, index: number) => (
+          <Item key={index}>
+            <TextHour>{makeHourString(item.datetime)}</TextHour>
+            <MiniImage source={{ uri: item.icon }} />
+            <TextTemp>{item.temp?.main}</TextTemp>
+          </Item>
+        ))
+      ) : (
+        <ActivityIndicator />
+      )}
     </Container>
   );
 };
