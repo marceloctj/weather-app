@@ -1,9 +1,18 @@
 import React from 'react';
 
-import { Container, Item, TextDayOfWeek, TextTemp, MiniImage } from './styles';
+import {
+  Container,
+  Item,
+  TextDayOfWeek,
+  TextTemp,
+  MiniImage,
+  TempContainer,
+} from './styles';
 
 import Text from '@presentation/components/Text';
 import { useAppSelector } from '@presentation/store/hooks';
+
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const daysOfWeek = [
   'Domingo',
@@ -29,9 +38,16 @@ export const WeatherWeeklyPanel: React.FC = () => {
           <Item key={index}>
             <TextDayOfWeek>{makeDayOfWeek(item.datetime)}</TextDayOfWeek>
             <MiniImage source={item.icon} />
-            <TextTemp>
-              {item.temp.min} <Text variant="secondary">{item.temp.max}</Text>
-            </TextTemp>
+            <TempContainer>
+              <TextTemp>
+                <Icon name="arrow-down" size={18} />
+                {item.temp.min}
+              </TextTemp>
+              <Text variant="secondary">
+                <Icon name="arrow-up" size={18} />
+                {item.temp.max}
+              </Text>
+            </TempContainer>
           </Item>
         ))}
     </Container>
