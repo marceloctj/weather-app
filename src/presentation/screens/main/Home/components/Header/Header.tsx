@@ -11,7 +11,6 @@ import {
   WeatherImage,
 } from './styles';
 import { useAppSelector } from '@presentation/store/hooks';
-import { ActivityIndicator } from 'react-native';
 
 export const Header: React.FC = () => {
   const geocoding = useAppSelector(state => state.home.geocoding);
@@ -28,12 +27,10 @@ export const Header: React.FC = () => {
     <Container>
       <LeftContent>
         <Text scale="h6" variant="primary" numberOfLines={2}>
-          {geocoding ? geocoding.city : <ActivityIndicator />}
+          {geocoding && geocoding.city}
         </Text>
-        <DegressText>
-          {weather ? `${weather.temp.main}º` : <ActivityIndicator />}
-        </DegressText>
-        <WeatherTag text={capitalize(weather?.description)} />
+        <DegressText>{weather && `${weather.temp.main}º`}</DegressText>
+        {weather && <WeatherTag text={capitalize(weather?.description)} />}
       </LeftContent>
       <RightContent>
         {weather && (

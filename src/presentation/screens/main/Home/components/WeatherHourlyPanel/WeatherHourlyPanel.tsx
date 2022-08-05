@@ -3,7 +3,6 @@ import React from 'react';
 import { Container, Item, TextHour, TextTemp, MiniImage } from './styles';
 
 import { useAppSelector } from '@presentation/store/hooks';
-import { ActivityIndicator } from 'react-native';
 
 export const WeatherHourlyPanel: React.FC = () => {
   const hourlyForecast = useAppSelector(state => state.home.weather?.hourly);
@@ -16,17 +15,14 @@ export const WeatherHourlyPanel: React.FC = () => {
 
   return (
     <Container>
-      {hourlyForecast ? (
+      {hourlyForecast &&
         hourlyForecast.map((item, index: number) => (
           <Item key={index}>
             <TextHour>{makeHourString(item.datetime)}</TextHour>
             <MiniImage source={{ uri: item.icon }} />
             <TextTemp>{item.temp?.main}</TextTemp>
           </Item>
-        ))
-      ) : (
-        <ActivityIndicator />
-      )}
+        ))}
     </Container>
   );
 };

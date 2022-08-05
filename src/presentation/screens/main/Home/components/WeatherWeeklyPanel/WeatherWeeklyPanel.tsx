@@ -4,7 +4,6 @@ import { Container, Item, TextDayOfWeek, TextTemp, MiniImage } from './styles';
 
 import Text from '@presentation/components/Text';
 import { useAppSelector } from '@presentation/store/hooks';
-import { ActivityIndicator } from 'react-native';
 
 const daysOfWeek = [
   'Domingo',
@@ -25,7 +24,7 @@ export const WeatherWeeklyPanel: React.FC = () => {
 
   return (
     <Container>
-      {dailyForecast ? (
+      {dailyForecast &&
         dailyForecast.map((item, index) => (
           <Item key={index}>
             <TextDayOfWeek>{makeDayOfWeek(item.datetime)}</TextDayOfWeek>
@@ -34,10 +33,7 @@ export const WeatherWeeklyPanel: React.FC = () => {
               {item.temp.min} <Text variant="secondary">{item.temp.max}</Text>
             </TextTemp>
           </Item>
-        ))
-      ) : (
-        <ActivityIndicator />
-      )}
+        ))}
     </Container>
   );
 };
