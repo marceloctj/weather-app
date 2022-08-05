@@ -28,7 +28,7 @@ describe('Remote Weather Service', () => {
     const matchObject: WeatherModel = weatherAdapter(body);
 
     await expect(
-      remoteGeocoding.getWeatherByCoord(body.coord),
+      remoteGeocoding.getWeatherCollectionByCoord(body.coord),
     ).resolves.toMatchObject(matchObject);
 
     expect(httpClient.request).toBeCalledWith({
@@ -54,7 +54,7 @@ describe('Remote Weather Service', () => {
     const remoteGeocoding = new RemoteWeather(httpClient);
 
     await expect(
-      remoteGeocoding.getWeatherByCoord(coord),
+      remoteGeocoding.getWeatherCollectionByCoord(coord),
     ).resolves.toBeUndefined();
 
     expect(httpClient.request).toBeCalledWith({

@@ -2,27 +2,26 @@ import { HttpClient, HttpStatusCode } from '@infra/http';
 import { OPENWEATHERMAP_API_WEATHER, OPENWEATHERMAP_KEY } from '@env';
 import {
   CoordModel,
-  WeatherModel,
   RemoteWeatherOneCallModel,
+  WeatherCollection,
 } from '@data/models';
-
-import { weatherAdapter } from '@data/adapters/weather-adapter';
+import { weatherCollectionAdapter } from '@data/adapters/weather-collection-adapter';
 
 export class RemoteWeather {
   constructor(private httpClient: HttpClient) {}
 
-  getWeatherByCoord = async (
+  getWeatherCollectionByCoord = async (
     coord: CoordModel,
-  ): Promise<WeatherModel | undefined> => {
+  ): Promise<WeatherCollection | undefined> => {
     const { body, statusCode } =
       await this.httpClient.request<RemoteWeatherOneCallModel>({
         url: '/onecall',
         method: 'get',
-        params: coord,
+        params: { ...coord, exclude: 'minutely' },
       });
 
     if (statusCode === HttpStatusCode.ok && body) {
-      return weatherAdapter(body);
+      return weatherCollectionAdapter(body);
     }
   };
 }
@@ -33,7 +32,6 @@ const remoteWeather = new RemoteWeather(
       appid: OPENWEATHERMAP_KEY,
       units: 'metric',
       lang: 'pt_br',
-      exclude: 'minutely',
     },
   }),
 );

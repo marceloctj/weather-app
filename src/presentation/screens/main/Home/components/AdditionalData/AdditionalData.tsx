@@ -9,7 +9,7 @@ import { Container, Item, TextHumidity, TextWindy } from './styles';
 
 export const AdditionalData: React.FC = () => {
   const theme = useTheme();
-  const weather = useAppSelector(state => state.home.weather);
+  const weather = useAppSelector(state => state.home.weather?.today);
 
   return (
     <Container>
