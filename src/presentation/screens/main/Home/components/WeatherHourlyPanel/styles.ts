@@ -17,7 +17,7 @@ export const TextHour = styled(Text).attrs({
   scale: 'button',
   align: 'center',
 })`
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 `;
 
 export const TextTemp = styled(Text).attrs({
@@ -25,11 +25,11 @@ export const TextTemp = styled(Text).attrs({
   scale: 'h6',
   align: 'center',
 })`
-  margin-top: 8px;
+  margin-top: 4px;
 `;
 
 export const MiniImage = styled.Image`
   width: 100%;
-  height: 30px;
+  height: 50px;
   resize-mode: contain;
 `;

@@ -20,12 +20,12 @@ export const Container = styled.View`
 export const Item = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 8px;
+  align-items: center;
 `;
 
 export const MiniImage = styled.Image`
   width: 100%;
-  height: 30px;
+  height: 40px;
   resize-mode: contain;
   flex: 1;
 `;

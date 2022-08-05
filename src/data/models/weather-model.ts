@@ -69,9 +69,9 @@ export interface WeatherModel {
   description: string;
   temp: {
     main: string;
-    feelsLike: string;
-    max: string;
-    min: string;
+    feelsLike?: string;
+    max?: string;
+    min?: string;
   };
   pressure: number;
   percentOfHumidity: number;
@@ -80,6 +80,7 @@ export interface WeatherModel {
     speedInKm: number;
     directionDegrees: number;
   };
+  datetime?: Date;
 }
 
 export interface WeatherCollection {
