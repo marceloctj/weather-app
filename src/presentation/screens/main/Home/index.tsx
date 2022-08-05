@@ -14,10 +14,13 @@ import {
   loadGeolocationData,
   loadWeatherData,
 } from '@presentation/store/actions/home';
+import { useAppSelector } from '@presentation/store/hooks';
+import { StatusBar } from 'react-native';
 
 const HomeScreen: React.FC = () => {
   const { coord } = useGeolocation();
   const dispatch = useDispatch();
+  const loaded = useAppSelector(state => state.home.loaded);
 
   useEffect(() => {
     if (coord) {
@@ -28,6 +31,7 @@ const HomeScreen: React.FC = () => {
 
   return (
     <Container>
+      <StatusBar barStyle="light-content" />
       <SafeAreaView />
       <Header />
       <ScrollView>

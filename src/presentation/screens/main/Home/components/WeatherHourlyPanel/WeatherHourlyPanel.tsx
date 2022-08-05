@@ -19,7 +19,7 @@ export const WeatherHourlyPanel: React.FC = () => {
         hourlyForecast.map((item, index: number) => (
           <Item key={index}>
             <TextHour>{makeHourString(item.datetime)}</TextHour>
-            <MiniImage source={{ uri: item.icon }} />
+            <MiniImage source={item.icon} />
             <TextTemp>{item.temp?.main}</TextTemp>
           </Item>
         ))}
