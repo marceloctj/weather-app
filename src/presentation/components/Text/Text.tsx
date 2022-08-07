@@ -30,7 +30,7 @@ const scales: { [key in Props['scale']]: number } = {
   h6: 20,
   body1: 16,
   body2: 14,
-  button: 14,
+  button: 16,
 };
 
 const StyledText = styled.Text<Props>`
