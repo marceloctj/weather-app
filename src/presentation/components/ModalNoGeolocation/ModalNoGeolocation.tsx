@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linking, Modal } from 'react-native';
+import { Linking, Modal, Platform } from 'react-native';
 import Text from '@presentation/components/Text';
 
 import {
@@ -24,17 +24,21 @@ export const ModalNoGeolocation: React.FC = () => {
           fornecer os dados de previsão de tempo.
         </Text>
         <Instructions>
-          <Text scale="body2" variant="secondary">
-            Vá para Configurações e depois
-          </Text>
-          <InstructionItem>
-            <Text scale="body1">Selecione Localização</Text>
-          </InstructionItem>
-          <InstructionItem>
-            <Text scale="body1">
-              Toque em Sempre ou Enquanto usar o aplicativo
-            </Text>
-          </InstructionItem>
+          {Platform.OS === 'ios' && (
+            <>
+              <Text scale="body2" variant="secondary">
+                Vá para Configurações e depois
+              </Text>
+              <InstructionItem>
+                <Text scale="body1">Selecione Localização</Text>
+              </InstructionItem>
+              <InstructionItem>
+                <Text scale="body1">
+                  Toque em Sempre ou Enquanto usar o aplicativo
+                </Text>
+              </InstructionItem>
+            </>
+          )}
           <InstructionItem>
             <SettingButton onPress={handleOpenSettings} text="Configurações" />
           </InstructionItem>
