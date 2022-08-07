@@ -33,7 +33,7 @@ export const theme: { [k: string]: DefaultTheme } = {
   default: {
     palette: {
       primary: makePalette('#111111', '#f5f5f5'),
-      secondary: makePalette('#ffcc02', '#f5f5f5'),
+      secondary: makePalette('#ffcc02', '#111'),
       background: makePalette('#fefefe', '#111'),
       black: makePalette('#000', '#f5f5f5'),
       white: makePalette('#f5f5f5', '#111'),

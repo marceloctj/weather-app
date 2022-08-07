@@ -9,6 +9,7 @@ import Header from './components/Header';
 import AdditionalData from './components/AdditionalData';
 import WeatherHourlyPanel from './components/WeatherHourlyPanel';
 import WeatherWeeklyPanel from './components/WeatherWeeklyPanel';
+import ModalNoGeolocation from '@presentation/components/ModalNoGeolocation';
 
 import {
   loadGeolocationData,
@@ -18,7 +19,7 @@ import { StatusBar } from 'react-native';
 import { useTheme } from 'styled-components/native';
 
 const HomeScreen: React.FC = () => {
-  const { coord } = useGeolocation();
+  const { coord, error } = useGeolocation();
   const dispatch = useDispatch();
 
   const theme = useTheme();
@@ -36,6 +37,7 @@ const HomeScreen: React.FC = () => {
         barStyle="light-content"
         backgroundColor={theme.palette.primary.main}
       />
+      {error && <ModalNoGeolocation />}
       <SafeAreaView />
       <Header />
       <ScrollView>
