@@ -1,5 +1,5 @@
 import React from 'react';
-import { themedRender, fireEvent } from '@presentation/utils/test-utils';
+import { renderWithTheme, fireEvent } from '@presentation/utils/test-utils';
 
 import { ModalNoGeolocation } from './ModalNoGeolocation';
 import { Linking, Platform } from 'react-native';
@@ -14,7 +14,7 @@ describe('ModalNoGeolocation Component', () => {
   });
 
   it('should render correctly with exclusive ios content', () => {
-    const { getByText, queryByText } = themedRender(<ModalNoGeolocation />);
+    const { getByText, queryByText } = renderWithTheme(<ModalNoGeolocation />);
     const textAssert =
       'O aplicativo precisa da sua localização, para fornecer os dados de previsão de tempo.';
     const textOnlyIOS = 'Vá para Configurações e depois';
@@ -24,7 +24,7 @@ describe('ModalNoGeolocation Component', () => {
 
   it('should render correctly without ios content when Platform.OS is android', () => {
     Platform.OS = 'android';
-    const { getByText, queryByText } = themedRender(<ModalNoGeolocation />);
+    const { getByText, queryByText } = renderWithTheme(<ModalNoGeolocation />);
     const textAssert =
       'O aplicativo precisa da sua localização, para fornecer os dados de previsão de tempo.';
     const textOnlyIOS = 'Vá para Configurações e depois';
@@ -34,7 +34,7 @@ describe('ModalNoGeolocation Component', () => {
 
   it('should call Linking.openSettings when press on Configurações Button', () => {
     const spyOnOpenSettings = jest.spyOn(Linking, 'openSettings');
-    const { getByText } = themedRender(<ModalNoGeolocation />);
+    const { getByText } = renderWithTheme(<ModalNoGeolocation />);
 
     fireEvent.press(getByText('Configurações'));
     expect(spyOnOpenSettings).toHaveBeenCalled();
