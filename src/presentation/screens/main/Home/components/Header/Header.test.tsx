@@ -19,17 +19,22 @@ describe('Header Component', () => {
       geocoding: getGeocodingMock(),
       weather: getWeatherCollectionMock(),
       loading: false,
-    }
+    };
 
-    const { getByText, getByTestId } = renderWithProviders(<Header onRefresh={onRefresh} />, {
-      preloadedState: {
-        home: homeMock
-      }
-    });
+    const { getByText, getByTestId } = renderWithProviders(
+      <Header onRefresh={onRefresh} />,
+      {
+        preloadedState: {
+          home: homeMock,
+        },
+      },
+    );
 
     expect(getByText(homeMock.geocoding.city)).toBeTruthy();
     expect(getByText(`${homeMock.weather.today.temp.main}º`)).toBeTruthy();
-    expect(getByText(capitalize(homeMock.weather.today.description))).toBeTruthy();
+    expect(
+      getByText(capitalize(homeMock.weather.today.description)),
+    ).toBeTruthy();
     expect(getByTestId('header-weather-image')).toBeTruthy();
 
     const button = getByText('Recarregar');
@@ -40,7 +45,6 @@ describe('Header Component', () => {
     expect(onRefresh).toBeCalledTimes(1);
   });
 
-
   it('should render correctly without refresh button when loading is true', () => {
     const onRefresh = () => {};
 
@@ -48,17 +52,19 @@ describe('Header Component', () => {
       geocoding: getGeocodingMock(),
       weather: getWeatherCollectionMock(),
       loading: true,
-    }
+    };
 
-    const { queryByText } = renderWithProviders(<Header onRefresh={onRefresh} />, {
-      preloadedState: {
-        home: homeMock
-      }
-    });
+    const { queryByText } = renderWithProviders(
+      <Header onRefresh={onRefresh} />,
+      {
+        preloadedState: {
+          home: homeMock,
+        },
+      },
+    );
 
     expect(queryByText('Recarregar')).toBeFalsy();
   });
-
 
   it('should render correctly without weather image when weather is null', () => {
     const onRefresh = () => {};
@@ -67,13 +73,16 @@ describe('Header Component', () => {
       geocoding: getGeocodingMock(),
       weather: null,
       loading: true,
-    }
+    };
 
-    const { queryByTestId } = renderWithProviders(<Header onRefresh={onRefresh} />, {
-      preloadedState: {
-        home: homeMock
-      }
-    });
+    const { queryByTestId } = renderWithProviders(
+      <Header onRefresh={onRefresh} />,
+      {
+        preloadedState: {
+          home: homeMock,
+        },
+      },
+    );
 
     expect(queryByTestId('header-weather-image')).toBeFalsy();
   });
