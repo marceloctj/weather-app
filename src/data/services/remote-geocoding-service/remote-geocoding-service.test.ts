@@ -1,6 +1,6 @@
 import { HttpClient, HttpStatusCode } from '@infra/http';
 
-import faker from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 
 import { RemoteGeocoding } from './remote-geocoding-service';
 import {
