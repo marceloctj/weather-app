@@ -24,7 +24,7 @@ const daysOfWeek = [
   'Sábado',
 ];
 
-export const WeatherWeeklyPanel: React.FC = () => {
+export const WeatherDailyPanel: React.FC = () => {
   const dailyForecast = useAppSelector(state => state.home.weather?.daily);
 
   const makeDayOfWeek = (date: Date) => {
