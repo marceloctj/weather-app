@@ -1,5 +1,5 @@
 import React from 'react';
-import { themedRender, fireEvent } from '@presentation/config/test-utils';
+import { themedRender, fireEvent } from '@presentation/utils/test-utils';
 
 import { ModalNoGeolocation } from './ModalNoGeolocation';
 import { Linking, Platform } from 'react-native';

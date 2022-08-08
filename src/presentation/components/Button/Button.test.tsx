@@ -1,5 +1,5 @@
 import React from 'react';
-import { themedRender } from '@presentation/config/test-utils';
+import { themedRender } from '@presentation/utils/test-utils';
 
 import { Button } from './Button';
 

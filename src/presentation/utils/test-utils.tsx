@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 
 import { ThemeProvider } from 'styled-components/native';
-import { theme } from '@presentation/config/theme';
+import { theme } from '@presentation/utils/theme';
 
 const Provider: React.FC<any> = ({ children }) => {
   return <ThemeProvider theme={theme.default}>{children}</ThemeProvider>;
