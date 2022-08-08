@@ -19,7 +19,7 @@ import { StatusBar } from 'react-native';
 import { useTheme } from 'styled-components/native';
 
 const HomeScreen: React.FC = () => {
-  const { coord, error } = useGeolocation();
+  const { coord, error, reload } = useGeolocation();
   const dispatch = useDispatch();
 
   const theme = useTheme();
@@ -39,7 +39,7 @@ const HomeScreen: React.FC = () => {
       />
       {error && <ModalNoGeolocation />}
       <SafeAreaView />
-      <Header />
+      <Header onRefresh={reload} />
       <ScrollView>
         <AdditionalData />
         <WeatherHourlyPanel />

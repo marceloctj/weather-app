@@ -36,5 +36,5 @@ export function useGeolocation() {
     })();
   }, []);
 
-  return { coord, error };
+  return { coord, error, reload: getCurrentPosition };
 }
