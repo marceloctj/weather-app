@@ -67,3 +67,14 @@ yarn android
 ````
 
 ## Testes
+
+Para execução dos testes, foi usado o `jest` com a biblioteca `@testing-library/react-native`.
+
+#### Para executar os testes
+````sh
+yarn test
+````
+#### Para executar os testes com a cobertura de teste
+````sh
+yarn test:coverage
+````
