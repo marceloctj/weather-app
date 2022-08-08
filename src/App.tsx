@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components/native';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import { RootNavigation } from '@presentation/navigation';
