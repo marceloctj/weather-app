@@ -5,7 +5,7 @@ import { AdditionalData } from './AdditionalData';
 import { getWeatherCollectionMock } from '@data/models/weather.model.mock';
 import { HomeState } from '@presentation/store/reducers/home';
 
-describe('AdditionalData Component', () => {
+describe('Home AdditionalData Component', () => {
   it('should be defined', () => {
     expect(AdditionalData).toBeDefined();
   });
