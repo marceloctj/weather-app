@@ -2,6 +2,8 @@
 
 Aplicativo para consulta da previsão do tempo com base na localização atual do usuário.
 
+![Home do App](https://i.ibb.co/yqRMJwm/Simulator-Screen-Shot-i-Phone-13-2022-08-08-at-00-25-41.png)
+
 ## Tabela de Conteúdos
 
 * [Começando](#começando)
