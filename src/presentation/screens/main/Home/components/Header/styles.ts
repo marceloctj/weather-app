@@ -34,7 +34,13 @@ export const RightContent = styled.View`
   margin-left: 16px;
 `;
 
+export const WeatherImageContainer = styled.View`
+  height: 140px;
+  margin-top: 16px;
+`;
+
 export const WeatherImage = styled.Image`
   width: 100%;
   height: 180px;
+  top: -20px;
 `;

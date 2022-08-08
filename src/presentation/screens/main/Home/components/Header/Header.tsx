@@ -9,12 +9,19 @@ import {
   WeatherTag,
   RightContent,
   WeatherImage,
+  WeatherImageContainer,
 } from './styles';
 import { useAppSelector } from '@presentation/store/hooks';
+import Button from '@presentation/components/Button';
 
-export const Header: React.FC = () => {
+type Props = {
+  onRefresh: () => void;
+};
+
+export const Header: React.FC<Props> = ({ onRefresh }) => {
   const geocoding = useAppSelector(state => state.home.geocoding);
   const weather = useAppSelector(state => state.home.weather?.today);
+  const loaded = useAppSelector(state => state.home.loaded);
 
   const capitalize = (str: string) => {
     if (!str) {
@@ -33,7 +40,14 @@ export const Header: React.FC = () => {
         {weather && <WeatherTag text={capitalize(weather?.description)} />}
       </LeftContent>
       <RightContent>
-        {weather && <WeatherImage source={weather.icon} resizeMode="contain" />}
+        {loaded && (
+          <Button text="Recarregar" onPress={onRefresh} iconName="refresh" />
+        )}
+        {weather && (
+          <WeatherImageContainer>
+            <WeatherImage source={weather.icon} resizeMode="contain" />
+          </WeatherImageContainer>
+        )}
       </RightContent>
     </Container>
   );
