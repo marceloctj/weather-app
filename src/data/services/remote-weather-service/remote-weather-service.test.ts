@@ -1,10 +1,10 @@
 import { HttpClient, HttpStatusCode } from '@infra/http';
 
 import { RemoteWeather } from './remote-weather-service';
-import { WeatherModel, RemoteWeatherModel } from '@data/models';
+
 import { remoteWeatherMock } from './mocks';
-import { weatherAdapter } from '@data/adapters/weather-adapter';
-import faker from '@faker-js/faker';
+import { weatherCollectionAdapter } from '@data/adapters/weather-collection-adapter';
+import { faker } from '@faker-js/faker';
 
 describe('Remote Weather Service', () => {
   it('should be defined', () => {
@@ -12,7 +12,7 @@ describe('Remote Weather Service', () => {
   });
 
   it('should return weather data by location correctly when HttpStatusCode is ok', async () => {
-    const body: RemoteWeatherModel = remoteWeatherMock;
+    const body = { ...remoteWeatherMock };
 
     const httpClient: HttpClient = {
       request: jest.fn().mockImplementation(() => ({
@@ -25,20 +25,25 @@ describe('Remote Weather Service', () => {
 
     expect(remoteGeocoding).toBeDefined();
 
-    const matchObject: WeatherModel = weatherAdapter(body);
+    const matchObject = weatherCollectionAdapter(body);
+
+    const coord = { lat: body.lat, lon: body.lon };
 
     await expect(
-      remoteGeocoding.getWeatherCollectionByCoord(body.coord),
+      remoteGeocoding.getWeatherCollectionByCoord(coord),
     ).resolves.toMatchObject(matchObject);
 
     expect(httpClient.request).toBeCalledWith({
-      url: '/weather',
+      url: '/onecall',
       method: 'get',
-      params: body.coord,
+      params: {
+        ...coord,
+        exclude: 'minutely',
+      },
     });
   });
 
-  it('should return getcoding by location correctly when HttpStatusCode is different of ok', async () => {
+  it('should return weather collection by location correctly when HttpStatusCode is different of ok', async () => {
     const httpClient: HttpClient = {
       request: jest.fn().mockImplementation(() => ({
         body: null,
@@ -58,9 +63,12 @@ describe('Remote Weather Service', () => {
     ).resolves.toBeUndefined();
 
     expect(httpClient.request).toBeCalledWith({
-      url: '/weather',
+      url: '/onecall',
       method: 'get',
-      params: coord,
+      params: {
+        ...coord,
+        exclude: 'minutely',
+      },
     });
   });
 });

@@ -52,7 +52,7 @@ function weatherAdapter(
 export function weatherCollectionAdapter(
   remoteWeather: RemoteWeatherOneCallModel,
 ): WeatherCollection {
-  const firstDaily = remoteWeather?.daily?.shift();
+  const [firstDaily] = remoteWeather?.daily;
 
   return {
     today: {
@@ -72,7 +72,7 @@ export function weatherCollectionAdapter(
       },
       datetime: new Date(item.dt * 1000),
     })),
-    daily: remoteWeather.daily.map(item => ({
+    daily: remoteWeather.daily.slice(1).map(item => ({
       ...weatherAdapter(item),
       temp: {
         max: item.temp.max.toFixed(0),
