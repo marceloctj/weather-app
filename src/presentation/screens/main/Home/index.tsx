@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { StatusBar } from 'react-native';
+import { useTheme } from 'styled-components/native';
 
 import { useGeolocation } from '@infra/geolocation';
 
@@ -13,13 +15,7 @@ import Loading from './components/Loading';
 
 import ModalNoGeolocation from '@presentation/components/ModalNoGeolocation';
 
-import {
-  loadGeolocationData,
-  loadWeatherData,
-  setLoaded,
-} from '@presentation/store/actions/home';
-import { StatusBar } from 'react-native';
-import { useTheme } from 'styled-components/native';
+import { loadHomeData } from '@presentation/store/actions/home';
 
 const HomeScreen: React.FC = () => {
   const { coord, error, reload } = useGeolocation();
@@ -29,9 +25,7 @@ const HomeScreen: React.FC = () => {
 
   useEffect(() => {
     if (coord) {
-      dispatch(setLoaded(false));
-      dispatch(loadWeatherData(coord));
-      dispatch(loadGeolocationData(coord));
+      dispatch(loadHomeData(coord));
     }
   }, [coord, dispatch]);
 

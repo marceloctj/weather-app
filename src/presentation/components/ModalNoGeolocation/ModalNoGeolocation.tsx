@@ -20,8 +20,8 @@ export const ModalNoGeolocation: React.FC = () => {
       <Container>
         <BroadcastOffIcon />
         <Text scale="h6">
-          O aplicativo precisa da sua localização exata ou aproximada, para
-          fornecer os dados de previsão de tempo.
+          O aplicativo precisa da sua localização, para fornecer os dados de
+          previsão de tempo.
         </Text>
         <Instructions>
           {Platform.OS === 'ios' && (
