@@ -1,5 +1,5 @@
 import React from 'react';
-import { themedRender } from '@presentation/utils/test-utils';
+import { renderWithTheme } from '@presentation/utils/test-utils';
 
 import { Button } from './Button';
 
@@ -9,12 +9,12 @@ describe('Button Component', () => {
   });
 
   it('should render correctly', () => {
-    const { getByText } = themedRender(<Button text="Button" />);
+    const { getByText } = renderWithTheme(<Button text="Button" />);
     expect(getByText('Button')).toBeTruthy();
   });
 
   it('should render correctly with icon', () => {
-    const { getByText, getByTestId } = themedRender(
+    const { getByText, getByTestId } = renderWithTheme(
       <Button text="Button" iconName="refresh" />,
     );
 

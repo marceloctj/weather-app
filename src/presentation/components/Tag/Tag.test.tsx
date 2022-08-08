@@ -1,5 +1,5 @@
 import React from 'react';
-import { themedRender } from '@presentation/utils/test-utils';
+import { renderWithTheme } from '@presentation/utils/test-utils';
 
 import { Tag } from './Tag';
 
@@ -9,7 +9,7 @@ describe('Tag Component', () => {
   });
 
   it('should render correctly', () => {
-    const { getByText } = themedRender(<Tag text="Tag" />);
+    const { getByText } = renderWithTheme(<Tag text="Tag" />);
     expect(getByText('Tag')).toBeTruthy();
   });
 });

@@ -29,7 +29,7 @@ const makePalette = (main: string, contrastText: string) => ({
   contrastText,
 });
 
-export const theme: { [k: string]: DefaultTheme } = {
+const theme: { [k: string]: DefaultTheme } = {
   default: {
     palette: {
       primary: makePalette('#111111', '#f5f5f5'),
@@ -46,3 +46,5 @@ export const theme: { [k: string]: DefaultTheme } = {
     },
   },
 };
+
+export default theme;
