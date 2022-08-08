@@ -10,7 +10,7 @@ import { Container, SafeAreaView, ScrollView } from './styles';
 import Header from './components/Header';
 import AdditionalData from './components/AdditionalData';
 import WeatherHourlyPanel from './components/WeatherHourlyPanel';
-import WeatherWeeklyPanel from './components/WeatherWeeklyPanel';
+import WeatherDailyPanel from './components/WeatherDailyPanel';
 import Loading from './components/Loading';
 
 import ModalNoGeolocation from '@presentation/components/ModalNoGeolocation';
@@ -42,7 +42,7 @@ const HomeScreen: React.FC = () => {
       <ScrollView>
         <AdditionalData />
         <WeatherHourlyPanel />
-        <WeatherWeeklyPanel />
+        <WeatherDailyPanel />
       </ScrollView>
     </Container>
   );
