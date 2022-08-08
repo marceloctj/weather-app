@@ -34,7 +34,9 @@ export const Button: React.FC<Props> = ({
 }) => {
   return (
     <Container variant={variant} {...rest}>
-      {Boolean(iconName) && <StyledIcon variant={variant} name={iconName} />}
+      {Boolean(iconName) && (
+        <StyledIcon variant={variant} name={iconName} testID="button-icon" />
+      )}
       <Text scale="button" font="bold" variant={variant} useContrast>
         {text}
       </Text>
