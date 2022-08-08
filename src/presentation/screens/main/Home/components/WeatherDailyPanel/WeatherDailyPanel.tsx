@@ -35,7 +35,7 @@ export const WeatherDailyPanel: React.FC = () => {
     <Container>
       {dailyForecast &&
         dailyForecast.map((item, index) => (
-          <Item key={index}>
+          <Item key={index} testID="weather-daily-item">
             <TextDayOfWeek>{makeDayOfWeek(item.datetime)}</TextDayOfWeek>
             <MiniImage source={item.icon} />
             <TempContainer>
