@@ -1,6 +1,5 @@
 const { defaults } = require('jest-config');
 
-console.log(defaults.moduleFileExtensions);
 module.exports = {
   preset: 'react-native',
   setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
