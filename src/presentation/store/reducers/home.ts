@@ -2,7 +2,7 @@ import { AnyAction } from 'redux';
 import { GeocodingModel, WeatherCollection } from '@data/models';
 import { Types } from '@presentation/store/actions/home';
 
-type HomeState = {
+export type HomeState = {
   weather: WeatherCollection;
   geocoding: GeocodingModel;
   loading: boolean;
