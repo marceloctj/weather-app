@@ -39,7 +39,7 @@ yarn
 
 3. Copie o arquivo env.json.example para env.json
 ````sh
-cp env.example .env
+cp .env.example .env
 ````
 
 4. Adicione a key do open wather map na variavel:
