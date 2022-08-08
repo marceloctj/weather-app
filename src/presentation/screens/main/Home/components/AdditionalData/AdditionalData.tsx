@@ -11,6 +11,8 @@ export const AdditionalData: React.FC = () => {
   const theme = useTheme();
   const weather = useAppSelector(state => state.home.weather?.today);
 
+  const loading = () => <ActivityIndicator accessibilityHint="loading" />;
+
   return (
     <Container>
       <Item>
@@ -19,9 +21,7 @@ export const AdditionalData: React.FC = () => {
           color={theme.palette.primary.main}
           size={24}
         />
-        <TextHumidity>
-          {weather?.percentOfHumidity || <ActivityIndicator />}%
-        </TextHumidity>
+        <TextHumidity>{weather?.percentOfHumidity || loading()}%</TextHumidity>
       </Item>
       <Item>
         <Icon
@@ -30,7 +30,7 @@ export const AdditionalData: React.FC = () => {
           size={24}
         />
         <TextWindy>
-          {weather?.wind?.speedInKm.toFixed(2) || <ActivityIndicator />} km/h
+          {weather?.wind?.speedInKm.toFixed(2) || loading()} km/h
         </TextWindy>
       </Item>
     </Container>
