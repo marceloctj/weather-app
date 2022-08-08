@@ -13,6 +13,7 @@ import {
 } from './styles';
 import { useAppSelector } from '@presentation/store/hooks';
 import Button from '@presentation/components/Button';
+import { capitalize } from '@presentation/utils/string';
 
 type Props = {
   onRefresh: () => void;
@@ -22,13 +23,6 @@ export const Header: React.FC<Props> = ({ onRefresh }) => {
   const geocoding = useAppSelector(state => state.home.geocoding);
   const weather = useAppSelector(state => state.home.weather?.today);
   const loading = useAppSelector(state => state.home.loading);
-
-  const capitalize = (str: string) => {
-    if (!str) {
-      return '';
-    }
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
 
   return (
     <Container>
@@ -45,7 +39,11 @@ export const Header: React.FC<Props> = ({ onRefresh }) => {
         )}
         {weather && (
           <WeatherImageContainer>
-            <WeatherImage source={weather.icon} resizeMode="contain" />
+            <WeatherImage
+              testID="header-weather-image"
+              source={weather.icon}
+              resizeMode="contain"
+            />
           </WeatherImageContainer>
         )}
       </RightContent>
