@@ -18,3 +18,8 @@ export const loadGeolocationData = (coord: CoordModel) => ({
   type: Types.ASYNC_LOAD_GEOLOCATION_DATA,
   payload: { coord },
 });
+
+export const setLoaded = (loaded: boolean) => ({
+  type: Types.SET_LOADED,
+  payload: loaded,
+});

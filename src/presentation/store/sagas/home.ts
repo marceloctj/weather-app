@@ -4,7 +4,7 @@ import { all, call, takeLatest, put } from 'redux-saga/effects';
 import { CoordModel, GeocodingModel, WeatherCollection } from '@data/models';
 import { RemoteWeatherService } from '@data/services/remote-weather-service';
 
-import { Types } from '@presentation/store/actions/home';
+import { setLoaded, Types } from '@presentation/store/actions/home';
 import { RemoteGeocodingService } from '@data/services/remote-geocoding-service';
 
 function* loadWeatherData({ payload }: AnyAction) {
@@ -21,7 +21,7 @@ function* loadWeatherData({ payload }: AnyAction) {
       payload: weatherData,
     });
 
-    yield put({ type: Types.SET_LOADED, payload: true });
+    yield put(setLoaded(true));
   }
 }
 

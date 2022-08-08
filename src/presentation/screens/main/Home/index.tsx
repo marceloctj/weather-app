@@ -9,11 +9,14 @@ import Header from './components/Header';
 import AdditionalData from './components/AdditionalData';
 import WeatherHourlyPanel from './components/WeatherHourlyPanel';
 import WeatherWeeklyPanel from './components/WeatherWeeklyPanel';
+import Loading from './components/Loading';
+
 import ModalNoGeolocation from '@presentation/components/ModalNoGeolocation';
 
 import {
   loadGeolocationData,
   loadWeatherData,
+  setLoaded,
 } from '@presentation/store/actions/home';
 import { StatusBar } from 'react-native';
 import { useTheme } from 'styled-components/native';
@@ -26,6 +29,7 @@ const HomeScreen: React.FC = () => {
 
   useEffect(() => {
     if (coord) {
+      dispatch(setLoaded(false));
       dispatch(loadWeatherData(coord));
       dispatch(loadGeolocationData(coord));
     }
@@ -38,6 +42,7 @@ const HomeScreen: React.FC = () => {
         backgroundColor={theme.palette.primary.main}
       />
       {error && <ModalNoGeolocation />}
+      <Loading />
       <SafeAreaView />
       <Header onRefresh={reload} />
       <ScrollView>
